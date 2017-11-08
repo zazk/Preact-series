@@ -1,2 +1,0 @@
-webpackJsonp([2],{"Px/5":function(e,n,t){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var o=t("KM04"),u=(t.n(o),Object(o.h)("div",null,"Welcome Task Component"));n.default=function(){return u}}});
-//# sourceMappingURL=route-task.chunk.df16c.js.map
