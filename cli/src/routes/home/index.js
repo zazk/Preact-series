@@ -4,7 +4,8 @@ import style from './style';
 import { getAllPeople } from '../../lib/api'
 export default class Home extends Component {
     state = {
-        characters :[]
+        characters :[],
+        favorites :[]
     }
     componentDidMount(){
         console.log( "Component Mounted!")
@@ -12,20 +13,37 @@ export default class Home extends Component {
             characters: characters
         }))
     }
-	render({},{characters}) {
+    addFavorite(){
+        console.log("Add Favorite")
+    }
+	render({},{characters,favorites}) {
 		return (
 			<div class={style.home}>
 				<h1>Home</h1>
 				<p>This is the Home component.</p>
+                <h3>Favorites</h3>
+                <section>
+                    {favorites && favorites.length?
+                        <div>
+                        {favorites.map( fav => 
+                            <div>
+                                {fav.name} 
+                            </div>
+                        )}
+                        </div>  
+                        :'Add your own favorites'}
+                </section>
+                <h3>Items </h3>
                 <section>
                     {characters && characters.length?
                         <div>
                         {characters.map( character => 
                             <div>
                                 {character.name} 
+                                <button  onClick={this.addFavorite}>Add Favorite</button>
                             </div>
                         )}
-                        </div>
+                        </div>  
                         :'Loading'}
                 </section>
 			</div>
