@@ -13,14 +13,16 @@ export default class Home extends Component {
             characters: characters
         }))
     }
-    addFavorite(){
-        console.log("Add Favorite")
+    addFavorite(character){
+        console.log("Add Favorite",character)
+        this.setState({favorites: 
+          this.state.favorites.concat(character)}) 
     }
-	render({},{characters,favorites}) {
-		return (
-			<div class={style.home}>
-				<h1>Home</h1>
-				<p>This is the Home component.</p>
+    render({},{characters,favorites}) {
+        return (
+            <div class={style.home}>
+                <h1>Home</h1>
+                <p>This is the Home component.</p>
                 <h3>Favorites</h3>
                 <section>
                     {favorites && favorites.length?
@@ -40,13 +42,13 @@ export default class Home extends Component {
                         {characters.map( character => 
                             <div>
                                 {character.name} 
-                                <button  onClick={this.addFavorite}>Add Favorite</button>
+                                <button  onClick={()=> this.addFavorite(character)}>Add Favorite</button>
                             </div>
                         )}
                         </div>  
                         :'Loading'}
                 </section>
-			</div>
-		);
-	}
+            </div>
+        );
+    }
 }
